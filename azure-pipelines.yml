@@ -1,0 +1,76 @@
+# ASP.NET Core
+# Build and test ASP.NET Core projects targeting .NET Core.
+# Add steps that run tests, create a NuGet package, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger:
+- master
+
+pool:
+  name: Hosted Windows 2019 with VS2019
+  demands:
+  - msbuild
+  - visualstudio
+
+variables:
+  BuildPlatform: 'any cpu'
+  BuildConfiguration: 'release'
+
+steps:
+- task: NuGetToolInstaller@0
+  displayName: 'Use NuGet 4.9.3'
+  inputs:
+    versionSpec: 4.9.3
+
+- task: NuGetCommand@2
+  displayName: 'NuGet restore'
+  inputs:
+    vstsFeed: 'b0de43cf-f634-4601-80fc-bf3fa6a015e9'
+    includeNuGetOrg: false
+    versioningScheme: byEnvVar
+    versionEnvVar: 'CI_Version'
+    includeSymbols: true
+
+- task: gittools.gitversion.gitversion-task.GitVersion@4
+  displayName: GitVersion
+  inputs:
+    preferBundledVersion: false
+
+- powershell: |
+   $UtcDateTime = (Get-Date).ToUniversalTime()
+   $FormattedDateTime = (Get-Date -Date $UtcDateTime -Format "yyyyMMdd-HHmmss")
+   $CI_Version = "$env:GITVERSION_MAJORMINORPATCH-ci-$FormattedDateTime"
+   
+   Write-Host ("##vso[task.setvariable variable=CI_Version;]$CI_Version")
+  displayName: 'PowerShell Script'
+
+- task: VSBuild@1
+  displayName: 'Build solution Janono.Azure.DocumentsDB.Scale.sln'
+  inputs:
+    solution: Janono.Azure.DocumentsDB.Scale.sln
+    platform: '$(BuildPlatform)'
+    configuration: '$(BuildConfiguration)'
+    maximumCpuCount: true
+
+- task: NuGetCommand@2
+  displayName: 'NuGet pack'
+  inputs:
+    command: pack
+    includeNuGetOrg: false
+    versioningScheme: byEnvVar
+    versionEnvVar: 'CI_Version'
+    includeSymbols: true
+
+- task: NuGetCommand@2
+  displayName: 'NuGet push'
+  inputs:
+    command: push
+    publishVstsFeed: 'b0de43cf-f634-4601-80fc-bf3fa6a015e9'
+
+- task: PublishSymbols@2
+  displayName: 'Publish symbols path'
+  inputs:
+    SymbolServerType: TeamServices
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'

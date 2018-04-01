@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+  <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  <TargetFramework>netstandard2.0</TargetFramework>
+  <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+  <GeneratePackageOnBuild>false</GeneratePackageOnBuild>  
+  <PackageProjectUrl>https://dev.azure.com/janono-pub/Janono.Azure.DocumentsDB.Scale</PackageProjectUrl>
+  <RepositoryUrl>https://dev.azure.com/janono-pub/Janono.Azure.DocumentsDB.Scale/_git/Janono.Azure.DocumentsDB.Scale</RepositoryUrl>
+  <RepositoryType>Git</RepositoryType>
+  <PackageTags>azurefunctions,microsoft,azure,cosmos,cosmosdb,documentdb,docdb,nosql,azureofficial,dotnetcore,netcore,netstandard</PackageTags>
+  <NeutralLanguage>en-Us</NeutralLanguage>
+  <Copyright>Janono (Janusz Nowak)</Copyright>
+  <Description>Azure Cosmos db Document db Auto Scale.</Description>
+  <Authors>Janono (Janusz Nowak)</Authors>
+  <Company>Janono (Janusz Nowak)</Company>
+  <!-- <PackageLicenseUrl>https://licenses.nuget.org/MIT</PackageLicenseUrl> -->
+  <PackageIconUrl>https://raw.githubusercontent.com/janusznowak/nuget-icons/master/Janono.Azure.DocumentsDB.Scale.png</PackageIconUrl>
+  <ApplicationIcon>Janono.Azure.DocumentsDB.Scale.ico</ApplicationIcon>  
+  </PropertyGroup>
+  <ItemGroup>    
+    <PackageReference Include="Microsoft.Azure.DocumentDB.Core" Version="2.2.3" />        
+   </ItemGroup>    
+</Project>

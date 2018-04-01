@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Janono.Azure.DocumentsDB.Scale</id>
+    <version>0.0.1</version>
+    <title>Documents DB Auto Scalse</title>
+    <authors>Janono (Janusz Nowak)</authors>
+    <owners>Janono (Janusz Nowak)</owners>
+    <copyright>Janono (Janusz Nowak)</copyright>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <!-- <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl> -->
+    <projectUrl>https://dev.azure.com/janono-pub/Janono.Azure.DocumentsDB.Scale</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/janusznowak/nuget-icons/master/Janono.Azure.DocumentsDB.Scale.png</iconUrl>
+    <description>Azure Cosmos db Auto Scale.</description>
+    <releaseNotes></releaseNotes>
+    <language>en-US</language>
+    <tags>azurefunctions,microsoft,azure,cosmos,cosmosdb,documentdb,docdb,nosql,azureofficial,dotnetcore,netcore,netstandard</tags>
+    <packageTypes>
+      <packageType name="Dependency" />
+    </packageTypes>
+    <repository type="Git" url="https://dev.azure.com/janono-pub/Janono.Azure.DocumentsDB.Scale/_git/Janono.Azure.DocumentsDB.Scale" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.Azure.DocumentDB.Core" version="1.0.0"/>
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+    </frameworkAssemblies>
+  </metadata>
+  <files>
+  </files>
+</package>
