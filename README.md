@@ -4,7 +4,7 @@
 
 ## Janono.Azure.DocumentsDB.Scale
 
- is still under active development at https://github.com/aspnet/EntityFramework6.
+ Is still under active development at https://dev.azure.com/janono-pub/Janono.Azure.DocumentsDB.Scale.
 
 ## Janono.Azure.DocumentsDB.Scale?
 
