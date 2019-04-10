@@ -3,7 +3,7 @@
   <metadata>
     <id>Janono.Azure.DocumentsDB.Scale</id>
     <version>0.0.1</version>
-    <title>Documents DB Auto Scalse</title>
+    <title>Azure Cosmos DB Auto Scale</title>
     <authors>Janono (Janusz Nowak)</authors>
     <owners>Janono (Janusz Nowak)</owners>
     <copyright>Janono (Janusz Nowak)</copyright>
