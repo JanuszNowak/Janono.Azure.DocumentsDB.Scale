@@ -1,13 +1,13 @@
-﻿namespace Janono.Azure.DocumentsDB.Scale
+namespace Janono.Azure.DocumentsDB.Scale
 {
+    using System;
     using System.Collections.Generic;
     using System.Diagnostics;
+    using System.Linq;
+    using System.Threading.Tasks;
     using Microsoft.Azure.Documents;
     using Microsoft.Azure.Documents.Client;
     using Microsoft.Azure.Documents.Linq;
-    using System;
-    using System.Linq;
-    using System.Threading.Tasks;
 
     public static class CosmosDbHelper
     {
@@ -100,7 +100,7 @@
                         var offerAfterUpdate = (OfferV2)client.ReplaceOfferAsync(updatedOffer).Result.Resource;
                         var end = DateTime.Now;
                         var span = end - start;
-                        
+
                         Trace.WriteLine($"OldOfferThroughput: {currentOfferThroughput}   NewOfferThroughput: {offerAfterUpdate.Content.OfferThroughput} take {span} ms");
                     }
                     else
@@ -113,7 +113,7 @@
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }

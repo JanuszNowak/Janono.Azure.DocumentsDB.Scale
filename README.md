@@ -10,11 +10,11 @@
 
 ## Janono.Azure.DocumentsDB.Scale?
 
-Janono.Azure.DocumentsDB.Scale is implemenation of Auto Scaling Azure Cosmos DB, becasue of lacking build in auto scaling.
+Janono.Azure.DocumentsDB.Scale is implementation of Auto Scaling Azure Cosmos DB, because of lacking build in auto scaling.
 
-Package name                              | Stable                 
+Package name                              | Stable
 ------------------------------------------|-------------------------------------------
-`Janono.Azure.DocumentsDB.Scale`          | [![NuGet](https://img.shields.io/nuget/v/Janono.Azure.DocumentsDB.Scale.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Janono.Azure.DocumentsDB.Scale/) 
+`Janono.Azure.DocumentsDB.Scale`          | [![NuGet](https://img.shields.io/nuget/v/Janono.Azure.DocumentsDB.Scale.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Janono.Azure.DocumentsDB.Scale/)
 
 
 
@@ -22,22 +22,22 @@ Package name                              | Stable
 
 ```
 using Janono.Azure.DocumentsDB.Scale;
-            
+
 ConnectionPolicy connectionPolicy = new ConnectionPolicy
 {
     //RetryOptions = { MaxRetryAttemptsOnThrottledRequests = 9, MaxRetryWaitTimeInSeconds = 30 }
-    //changing defaults to not receive 429 after 30 seconds and make instant scaling more effective  
+    //changing defaults to not receive 429 after 30 seconds and make instant scaling more effective
     RetryOptions = { MaxRetryAttemptsOnThrottledRequests = 2, MaxRetryWaitTimeInSeconds = 3 }
 };
-            
+
 var _collectionLink = UriFactory.CreateDocumentCollectionUri(ConData.DbName, ConData.CollectionLink);
 
 using (var client = new DocumentClient(new Uri(ConData.CosmosDbEndpoint), ConData.CosmosDbKey, connectionPolicy))
 {
     //with no auto scaling
     client.CreateDocumentAsync(_collectionLink, documentToInsert);
-                
-    //with auto scaling 
+
+    //with auto scaling
     CosmosDbHelper.ExecuteScale(client, c => c.CreateDocumentAsync(_collectionLink, documentToInsert),
     ConData.DbName,
     ConData.CollectionClick,
