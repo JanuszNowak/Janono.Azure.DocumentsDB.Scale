@@ -11,4 +11,4 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       # Dockerfile:
-      - uses: Azure/azure-cosmos-dotnet-v3@3.38.1
+      - uses: Azure/azure-cosmos-dotnet-v3@3.51.0
